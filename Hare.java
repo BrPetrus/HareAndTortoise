@@ -4,7 +4,6 @@ public class Hare {
 	private int lengthOfRace;	//User should not be able to manipulate this number, so he doesn't break the object's logic
 	
 	private final int DEFAULT_POSITION = 1;
-	//private final int DEFAULT_LENGTH = 50;
 	
 	public Hare(int defaultPosition) {	
 		if (defaultPosition < DEFAULT_POSITION) {
@@ -13,13 +12,6 @@ public class Hare {
 		}
 		else
 			position = defaultPosition;
-		
-		/*if (Maximum < defaultPosition) {
-			System.out.println("ERROR: The lenght of the race have to be bigger than object's current position! Setting to default value: " + DEFAULT_LENGTH);
-			lengthOfRace = DEFAULT_LENGTH;
-		}
-		else
-			lengthOfRace = Maximum;*/
 	}
 	
 	//--------------------------------

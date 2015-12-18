@@ -4,7 +4,6 @@ public class Tortoise {
 	private int lengthOfRace;
 	
 	private final int DEFAULT_POSITION = 1;
-	//private final int DEFAULT_LENGTH = 50;
 	
 	public Tortoise(int defaultPosition) {	
 		if (defaultPosition < DEFAULT_POSITION) {
@@ -13,13 +12,6 @@ public class Tortoise {
 		}
 		else
 			position = defaultPosition;
-		
-		/*if (Maximum < defaultPosition) {
-			System.out.println("ERROR: The lenght of the race have to be bigger than object's current position! Setting to default value: " + DEFAULT_LENGTH);
-			lengthOfRace = DEFAULT_LENGTH;
-		}
-		else
-			lengthOfRace = Maximum;*/
 	}
 	
 	//--------------------------------
