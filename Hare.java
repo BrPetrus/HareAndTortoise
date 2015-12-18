@@ -3,24 +3,24 @@ public class Hare {
 	private int position;
 	private int lengthOfRace;	//User should not be able to manipulate this number, so he doesn't break the object's logic
 	
-	private final int DEFAULT_POSITION = 0;
-	private final int DEFAULT_LENGTH = 50;
+	private final int DEFAULT_POSITION = 1;
+	//private final int DEFAULT_LENGTH = 50;
 	
-	public Hare(int defaultPosition, int Maximum) {	
-		if (defaultPosition < 0) {
+	public Hare(int defaultPosition) {	
+		if (defaultPosition < DEFAULT_POSITION) {
 			System.out.println("ERROR: You tried to assign negative value as a position! Setting to default value: " + DEFAULT_POSITION);
 			position = defaultPosition;
 		}
 		else
 			position = defaultPosition;
 		
-		if (Maximum < defaultPosition) {
+		/*if (Maximum < defaultPosition) {
 			System.out.println("ERROR: The lenght of the race have to be bigger than object's current position! Setting to default value: " + DEFAULT_LENGTH);
 			lengthOfRace = DEFAULT_LENGTH;
 		}
 		else
-			lengthOfRace = Maximum;
-	};
+			lengthOfRace = Maximum;*/
+	}
 	
 	//--------------------------------
 	//	Getters
@@ -52,9 +52,9 @@ public class Hare {
 		int rNumber = generateNumber(1, 10);
 		
 		//Move
-		//1 or 2 -> Big hop, move 9 squares to right
+		//1 2 -> Big hop, move 9 squares to right
 		if (rNumber == 1 || rNumber == 2) {
-			position += 6;
+			position += 9;
 		}
 		//3 4 5 -> Small hop, move 1 square to right
 		else if (rNumber >= 3 && rNumber <= 5) {
@@ -63,14 +63,14 @@ public class Hare {
 		//6 -> Big slip, move 12 squares to left
 		else if(rNumber == 6) {
 			position -= 12;
-			if (position < 0)
-				position = 0;
+			if (position < DEFAULT_POSITION)
+				position = DEFAULT_POSITION;
 		}
 		//7 8 -> Small slip, move 2 squares to left
 		else if(rNumber == 7 || rNumber == 8) {
 			position -= 2;
-			if (position < 0)
-				position = 0;
+			if (position < DEFAULT_POSITION)
+				position = DEFAULT_POSITION;
 		}
 		//9 10 -> fall asleep, don't move
 		else {}
