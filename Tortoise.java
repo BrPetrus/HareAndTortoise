@@ -1,7 +1,6 @@
 
 public class Tortoise {
 	private int position;
-	private int lengthOfRace;
 	
 	private final int DEFAULT_POSITION = 1;
 	
@@ -20,16 +19,13 @@ public class Tortoise {
 	public int getPosition() {
 		return position;
 	}
-	public int getLengthOfRace() {
-		return lengthOfRace;
-	}
 		
 	//--------------------------------
 	//	Setters
 	//--------------------------------
 	public void setPosition(int newPosition) {
-		if (newPosition < 0) {
-			System.out.println("You tried to assign negative value as a position!");
+		if (newPosition < DEFAULT_POSITION) {
+			System.out.println("ERROR: Position have to be positive! Setting to default value: " + DEFAULT_POSITION);
 		}
 		else {
 			position = newPosition;

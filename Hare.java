@@ -1,13 +1,12 @@
 
 public class Hare {
 	private int position;
-	private int lengthOfRace;	//User should not be able to manipulate this number, so he doesn't break the object's logic
 	
 	private final int DEFAULT_POSITION = 1;
 	
 	public Hare(int defaultPosition) {	
 		if (defaultPosition < DEFAULT_POSITION) {
-			System.out.println("ERROR: You tried to assign negative value as a position! Setting to default value: " + DEFAULT_POSITION);
+			System.out.println("ERROR: Position have to be positive! Setting to default value: " + DEFAULT_POSITION);
 			position = defaultPosition;
 		}
 		else
@@ -20,16 +19,13 @@ public class Hare {
 	public int getPosition() {
 		return position;
 	}
-	public int getLengthOfRace() {
-		return lengthOfRace;
-	}
 	
 	//--------------------------------
 	//	Setters
 	//--------------------------------
 	public void setPosition(int newPosition) {
-		if (newPosition < 0) {
-			System.out.println("You tried to assign negative value as a position!");
+		if (newPosition < DEFAULT_POSITION) {
+			System.out.println("ERROR: Position have to be positive! Setting to default value: " + DEFAULT_POSITION);
 		}
 		else {
 			position = newPosition;

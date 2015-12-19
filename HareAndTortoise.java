@@ -1,16 +1,20 @@
 import java.util.Scanner;
 public class HareAndTortoise {
 	public static void main(String[] args) {
-		final int LENGTH = 30; //TODO let user choose the size
+		final int LENGTH = 50; 
 		Scanner Input = new Scanner(System.in);
 		
+		//Program loop
 		boolean runProgram = true;
-		while (runProgram) {
-			//Game loop
-			//int[] race = new int[LENGTH];
+		while (runProgram) {	
+			//Create objects
 			Hare hare = new Hare(1);
 			Tortoise tortoise = new Tortoise(1);
-			int iteration = 0;
+			
+			//Starting message
+			System.out.println("AND THEY’RE OFF!!");
+			
+			//Simulation loop
 			boolean runSimulation = true;
 			while(runSimulation) {
 				//Update hare
@@ -19,41 +23,26 @@ public class HareAndTortoise {
 				//Update tortoise
 				tortoise.move();
 				
+				//Print
+				printTrack(LENGTH, hare, tortoise);
+				System.out.println();
+				
 				//Check for victory
-				if (tortoise.getPosition() >= LENGTH && hare.getPosition() >= LENGTH) {
+				if (tortoise.getPosition() >= LENGTH && hare.getPosition() >= LENGTH) { //Tie
 					System.out.println("IT’S A TIE!!");
 					runSimulation = false;
-					continue;
 				}
-				else if (tortoise.getPosition() >= LENGTH) {
+				else if (tortoise.getPosition() >= LENGTH) { //Tortoise wins
 					System.out.println("TORTOISE WINS!!");
 					runSimulation = false;
-					continue;
 				}
-				else if (hare.getPosition() >= LENGTH) {
+				else if (hare.getPosition() >= LENGTH) { //Hare wins
 					System.out.println("HARE WINS!!");
 					runSimulation = false;
-					continue;
 				}
-				
-				//Print result
-				for (int positionPointingTo = 1; positionPointingTo <= LENGTH; positionPointingTo++) {
-					if (positionPointingTo == hare.getPosition() && positionPointingTo == tortoise.getPosition())
-						System.out.print("OUCH!!");
-					else if (positionPointingTo == hare.getPosition())
-						System.out.print("H");
-					else if (positionPointingTo == tortoise.getPosition())
-						System.out.print("T");
-					else 
-						System.out.print(" ");
-				}
-				System.out.println("\t\tIteration: " + iteration);
-				
-				iteration++;
 			}
 			
-			System.out.println("Iterations: " + iteration);
-			
+			//Run simulation again ?
 			System.out.println("\n\nEnter X to end or any other key to run the simulation again: ");
 			String temp = Input.nextLine();
 			if (temp.charAt(0) == 'X' || temp.charAt(0) == 'x')
@@ -61,27 +50,18 @@ public class HareAndTortoise {
 		}
 	}
 	
-	/*public static void resetArray(int[] array) {
-		for(int x = 0; x < array.length; x++) {
-			array[x] = 0;
+	public static void printTrack(int LENGTH, Hare hare, Tortoise tortoise) {
+		for (int positionPointingTo = 1; positionPointingTo <= LENGTH + 12; positionPointingTo++) { //LENGTH +12 is there so, when an object passes finish line. The object will still be printed
+			if (positionPointingTo == hare.getPosition() && positionPointingTo == tortoise.getPosition()) //If they land on same square
+				System.out.print("OUCH!!");
+			else if (positionPointingTo == hare.getPosition())
+				System.out.print("H");
+			else if (positionPointingTo == tortoise.getPosition())
+				System.out.print("T");
+			/*else if (positionPointingTo == LENGTH)
+				System.out.print("F");*/ //Great for readability but not allowed by the rules
+			else 
+				System.out.print(" ");
 		}
 	}
-	
-	public static void printArray(int[] array) {
-		for(int x = 0; x < array.length; x++) {
-			switch(array[x]) {
-			case 0:
-				System.out.print(" ");
-				break;
-			case 1:
-				System.out.print("H");
-				break;
-			case 2:
-				System.out.print("T");
-				break;
-			case 3:
-				System.out.print("");
-			}
-		} 
-	}*/
 }
